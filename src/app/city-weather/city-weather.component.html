@@ -1,6 +1,6 @@
 <section class="weather__card" routerLink="/details/{{name}}">
   <span class="city-name__text">
-    {{ name }}
+    <input (click)="$event.stopPropagation();" [(ngModel)]="name" (ngModelChange)="changeName(name)" >
   </span>
   <div [ngSwitch]="condition" class="weather-icon__container">
     <i *ngSwitchCase="'clouds'" class="fas fa-cloud-sun fa-10x"></i>
