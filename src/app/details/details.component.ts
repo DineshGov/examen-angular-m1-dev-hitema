@@ -7,6 +7,7 @@ import { WeatherService } from '../weather.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
+
 export class DetailsComponent implements OnInit {
   city: string;
   state: string;
@@ -14,8 +15,10 @@ export class DetailsComponent implements OnInit {
   hum: number;
   wind: number;
   today: string;
+  days: object;
 
   constructor(public activeRouter: ActivatedRoute, public weatherService: WeatherService) {
+    this.days = [];
   }
 
   ngOnInit() {
@@ -26,5 +29,6 @@ export class DetailsComponent implements OnInit {
       this.hum = this.weatherService.getCurrentHum(this.city);
       this.wind = this.weatherService.getCurrentWind(this.city);
     });
+    this.days = this.weatherService.getForecast();
   }
 }

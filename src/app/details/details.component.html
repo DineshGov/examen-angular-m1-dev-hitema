@@ -19,7 +19,7 @@
       <div class="header-content__wrapper">
         <div class="today-weather__container">
           <div class="temp-state__container">
-            <span class="temperature__text">{{ temp }}°</span>
+            <span class="temperature__text">{{ temp | number:'1.1-1':'fr-FR' }}°</span>
             <span class="weather-state__text">{{ state }}</span>
           </div>
           <div class="hum-wind__container">
@@ -48,11 +48,12 @@
     <main class="body-content__wrapper">
       <section class="forecast__container">
         <!-- display forecast for the whole week --> 
-        <div class="day-weather__container">
-          <span class="day-name"> </span>
-          <span class="day-temp"> °</span>
-          <span class="day-condition"> </span>
+        <div *ngFor="let day of days" class="day-weather__container">
+          <span class="day-name"> {{ day.name }} </span>
+          <span class="day-temp"> {{ day.temp| number:'1.1-1':'fr-FR' }}°</span>
+          <span class="day-condition"> {{day.condition}} </span>
         </div>
+
       </section>
     </main>
   </section>
